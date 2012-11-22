@@ -16,8 +16,9 @@
 //= require_tree .
 
 
-var actual_count=30
+var actual_count=100
 if ($('#content').children().size() < actual_count){
+
     $(document).ready(function () {
 
         $(function(){
@@ -32,16 +33,11 @@ if ($('#content').children().size() < actual_count){
                 'beforeLoad': function(){ // before load function, you can display a preloader div
 
                     $('#loading').fadeIn();
-
-
-
                 },
                 'afterLoad': function(elementsLoaded){ // after loading content, you can use this function to animate your new elements
                     $('#loading').fadeOut();
                     var i = 0;
                     $(elementsLoaded).fadeInWithDelay();
-
-
                     if ($('#content').children().size() > actual_count){ // if more than 100 results already loaded, then stop pagination (only for testing)
                         $('#nomoreresults').fadeIn();
                         $('#content').stopScrollPagination();
@@ -55,6 +51,7 @@ if ($('#content').children().size() < actual_count){
                 effect : "fadeIn"  ,
                 event: "scrollstop"
             });
+
             // code for fade in element by element
             $.fn.fadeInWithDelay = function(){
                 var delay = 0;
@@ -75,9 +72,6 @@ else
         event: "scrollstop"
     });
     $('#content').stopScrollPagination();
-    $("img.lazy").lazyload({
-        effect : "fadeIn"  ,
-        event: "scrollstop"
-    });
+//    alert("no more results to display")
 }
 
